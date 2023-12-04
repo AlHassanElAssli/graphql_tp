@@ -12,8 +12,16 @@ public class ModelMapperConfig {
     private final ModelMapper modelMapper = new ModelMapper();
 
     public CreatorDTO fromCreator(Creator creator) {
+
         return this.modelMapper.map(creator, CreatorDTO.class);
     }
-    public VideoDTO fromVideo(Video video) { return this.modelMapper.map(video, VideoDTO.class);
+    public VideoDTO fromVideo(Video video) {
+        return this.modelMapper.map(video, VideoDTO.class);
+    }
+    public Video toVideo (VideoDTO videoDTO){
+        return this.modelMapper.map(videoDTO,Video.class);
+    }
+    public Creator toCreator (CreatorDTO creatorDTO){
+        return this.modelMapper.map(creatorDTO,Creator.class);
     }
 }

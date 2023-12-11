@@ -7,7 +7,6 @@ import ma.xproce.entities.Video;
 import ma.xproce.mappers.ModelMapperConfig;
 import ma.xproce.repositories.CreatorRepository;
 import ma.xproce.repositories.VideoRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -18,6 +17,7 @@ import java.util.List;
 
 @Controller
 public class VideoGraphQlController {
+
     private VideoRepository videoRepository;
     private CreatorRepository creatorRepository;
     @Autowired
@@ -37,11 +37,13 @@ public class VideoGraphQlController {
     }
     @MutationMapping
     public Video saveVideo(@Argument("video") VideoDTO videoDTO){
+        System.out.println(videoDTO);
         Video video = modelMapperConfig.toVideo(videoDTO);
         return videoRepository.save(video);
     }
     @MutationMapping
     public Creator saveCreator(@Argument("creator") CreatorDTO creatorDTO){
+        System.out.println(creatorDTO);
         Creator creator = modelMapperConfig.toCreator(creatorDTO);
         return creatorRepository.save(creator);
     }

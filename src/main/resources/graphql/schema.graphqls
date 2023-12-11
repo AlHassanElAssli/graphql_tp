@@ -23,7 +23,7 @@ type Video{
     url : String,
     description : String,
     datePublication: String,
-    create : Creator
+    creator : Creator
 }
 type Creator{
     id: Float,

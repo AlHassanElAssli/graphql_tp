@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import java.util.Date;
+
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "ma.xproce.repositories")
@@ -30,12 +30,12 @@ public class VideoApplication {
     @Bean
     CommandLineRunner start() {
         return args -> {
-            creatorRepository.save(Creator.builder().id(Long.valueOf(1)).name("creator1").email("test@gmail.com").build());
-            creatorRepository.save(Creator.builder().id(Long.valueOf(2)).name("creator2").email("test2@gmail.com").build());
-            Creator c1 = creatorRepository.getById(Long.valueOf(1));
-            Creator c2 = creatorRepository.getById(Long.valueOf(2));
-            videoRepository.save(Video.builder().id(Long.valueOf(1)).name("video1").url("url1").datePublication(new Date()).description("desc1").creator(c1).build());
-            videoRepository.save(Video.builder().id(Long.valueOf(2)).name("video2").url("url12").datePublication(new Date()).description("desc2").creator(c2).build());
+            creatorRepository.save(Creator.builder().id(1L).name("creator1").email("test@gmail.com").build());
+            creatorRepository.save(Creator.builder().id(2L).name("creator2").email("test2@gmail.com").build());
+            Creator c1 = creatorRepository.getById(1L);
+            Creator c2 = creatorRepository.getById(2L);
+            videoRepository.save(Video.builder().id(1L).name("video1").url("url1").datePublication("").description("desc1").creator(c1).build());
+            videoRepository.save(Video.builder().id(2L).name("video2").url("url12").datePublication("").description("desc2").creator(c2).build());
         };
     }
 }
